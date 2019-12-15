@@ -43,7 +43,7 @@ func TestErrHandler(t *testing.T) {
 	// data should be nil as no data was passed when err was checked
 	assert.Nil(data.([]interface{})[0])
 
-	// Testing that data is successfuly passed on to the handler
+	// Testing that data is successfully passed on to the handler
 	err = errors.New("generic error")
 	data = errHandler.Check(err, "test")
 
@@ -54,5 +54,5 @@ func TestErrHandler(t *testing.T) {
 	err = customError{}
 	data = errHandler.Check(err, nil)
 	assert.True(customHandlerOccured)
-	assert.Equal(err, data) // Testing id err was successfuly passed on
+	assert.Equal(err, data) // Testing id err was successfully passed on
 }
