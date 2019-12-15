@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/ZeroTechh/blaze)](https://goreportcard.com/report/github.com/ZeroTechh/blaze) [![GoDoc](https://godoc.org/github.com/SonicRoshan/blaze?status.svg)](https://godoc.org/github.com/SonicRoshan/blaze) [![GoCover](https://gocover.io/_badge/github.com/SonicRoshan/blaze)](https://gocover.io/github.com/SonicRoshan/blaze)
+
 # blaze
 Making golang easier
 
