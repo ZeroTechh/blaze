@@ -22,8 +22,7 @@ func (funcLog FuncLog) getFields(fields ...zap.Field) []zap.Field {
 	return newFields
 }
 
-/* Panic will log an Panic of
-the panic message and that the function paniced */
+// Panic will log the panic at PANIC level
 func (funcLog FuncLog) Panic(message interface{}, fields ...zap.Field) {
 	fieldsToAdd := append(
 		funcLog.getFields(fields...), zap.Any("Panic Message", message))
@@ -33,7 +32,7 @@ func (funcLog FuncLog) Panic(message interface{}, fields ...zap.Field) {
 	)
 }
 
-// Error will log the error and that the function ran into error
+// Error will log the error at ERROR level
 func (funcLog FuncLog) Error(err error, fields ...zap.Field) {
 	fieldsToAdd := append(funcLog.getFields(fields...), zap.Error(err))
 	funcLog.log.Error(
@@ -42,7 +41,7 @@ func (funcLog FuncLog) Error(err error, fields ...zap.Field) {
 	)
 }
 
-// Completed will log an info that the function ran successfully
+// Completed will that function completed at INFO level
 func (funcLog FuncLog) Completed(fields ...zap.Field) {
 	funcLog.log.Info(
 		fmt.Sprintf("Function %s Executed Successfully", funcLog.name),
@@ -50,7 +49,7 @@ func (funcLog FuncLog) Completed(fields ...zap.Field) {
 	)
 }
 
-// Started will log an debug that the function started successfully
+// Started will log that function started at DEBUG level
 func (funcLog FuncLog) Started(fields ...zap.Field) {
 	funcLog.log.Debug(
 		fmt.Sprintf("Function %s Started", funcLog.name),

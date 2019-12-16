@@ -5,7 +5,6 @@ import "reflect"
 // NewErrorHandler is used to create a new error handler
 func NewErrorHandler(
 	defaultHandler func(error, ...interface{}) interface{}) *ErrorHandler {
-
 	handler := &ErrorHandler{
 		defaultHandler: defaultHandler,
 	}
@@ -28,17 +27,12 @@ func (errorHandler *ErrorHandler) Init() {
 func (errorHandler *ErrorHandler) AddHandler(
 	handlerFunc func(error, ...interface{}) interface{},
 	err error) {
-
 	errType := reflect.TypeOf(err)
 	errorHandler.handlers[errType] = handlerFunc
 }
 
-/* Check will check if err is nil,
-   if not then it will check for handler of that err type and run it
-   else it will run default err handler.
-   The data will be passed on to the err handler */
+// Check will check for error and run the handler of that error's type
 func (errorHandler ErrorHandler) Check(err error, data ...interface{}) interface{} {
-
 	if err == nil {
 		return nil
 	}
