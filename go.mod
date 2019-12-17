@@ -1,4 +1,4 @@
-module blaze
+module github.com/ZeroTechh/blaze
 
 go 1.13
 
