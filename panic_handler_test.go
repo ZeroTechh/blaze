@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func handler(msg interface{}, data interface{}) {
-	asserter := data.(*assert.Assertions)
+func handler(msg interface{}, data ...interface{}) {
+	asserter := data[0].(*assert.Assertions)
 	asserter.Equal("panic", msg)
 }
 

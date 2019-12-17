@@ -1,7 +1,7 @@
 package blaze
 
 // NewPanicHandler is used to create a new panic handler
-func NewPanicHandler(handler func(interface{}, interface{})) *PanicHandler {
+func NewPanicHandler(handler func(interface{}, ...interface{})) *PanicHandler {
 	return &PanicHandler{
 		handler: handler,
 	}
@@ -9,7 +9,7 @@ func NewPanicHandler(handler func(interface{}, interface{})) *PanicHandler {
 
 // PanicHandler will be used to handle panics
 type PanicHandler struct {
-	handler func(interface{}, interface{})
+	handler func(interface{}, ...interface{})
 }
 
 // Check will check for panic and execute handler with data
