@@ -6,6 +6,15 @@ import (
 	"go.uber.org/zap"
 )
 
+// NewFuncLog will create a new func log
+func NewFuncLog(name string, log *zap.Logger, fields ...zap.Field) *FuncLog {
+	return &FuncLog{
+		name,
+		log,
+		fields,
+	}
+}
+
 // FuncLog is used to easily log golang function statuses
 type FuncLog struct {
 	name   string

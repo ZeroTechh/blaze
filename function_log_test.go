@@ -17,11 +17,11 @@ func TestFuncLog(t *testing.T) {
 	log, _ := zap.NewDevelopment(
 		zap.AddCallerSkip(1),
 	)
-	funcLog := FuncLog{
-		name:   "test",
-		fields: []zap.Field{zap.String("test", "test")},
-		log:    log,
-	}
+	funcLog := NewFuncLog(
+		"test",
+		log,
+		zap.String("test", "test"),
+	)
 
 	funcLog.Started()
 	funcLog.Error(errors.New("Error"))
