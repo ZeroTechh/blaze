@@ -69,7 +69,9 @@ func someFunction(someArgument string) {
 
     output, err := someTask()
     if err != nil {
-        funcLog.Error(err) // logs the error ERROR
+        wrappedErr := funcLog.Error(err) // logs the error ERROR
+        // also returns an wrapped version of the error
+        return wrappedErr
     }
 
     funcLog.Completed(zap.String("output", output)) 
@@ -77,6 +79,7 @@ func someFunction(someArgument string) {
        In all of the function of FuncLog 
        you can enter more zap fields like done here
     */
+    return nil
 }
 
 

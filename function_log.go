@@ -3,6 +3,7 @@ package blaze
 import (
 	"fmt"
 
+	"github.com/pkg/errors"
 	"go.uber.org/zap"
 )
 
@@ -41,13 +42,15 @@ func (funcLog FuncLog) Panic(message interface{}, fields ...zap.Field) {
 	)
 }
 
-// Error will log the error at ERROR level
-func (funcLog FuncLog) Error(err error, fields ...zap.Field) {
+// ErrorWrap will log the error at ERROR level and wrap it with information
+func (funcLog FuncLog) Error(err error, fields ...zap.Field) error {
+	msg := fmt.Sprintf("Function %s Ran Into An Error", funcLog.name)
 	fieldsToAdd := append(funcLog.getFields(fields...), zap.Error(err))
 	funcLog.log.Error(
-		fmt.Sprintf("Function %s Ran Into An Error", funcLog.name),
+		msg,
 		fieldsToAdd...,
 	)
+	return errors.Wrap(err, msg)
 }
 
 // Completed will that function completed at INFO level
