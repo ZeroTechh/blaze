@@ -19,7 +19,7 @@ func NewFuncLog(name string, log *zap.Logger, fields ...zap.Field) *FuncLog {
 // FuncLog is used to easily log golang function statuses
 type FuncLog struct {
 	name   string
-	log    *zap.Logger
+	Log    *zap.Logger
 	fields []zap.Field
 }
 
